@@ -25,14 +25,14 @@
 #define ZReverse 7 //Z軸動作反転用ピン
 
 //ユーザ入力
-#define ButtonX 9
-#define ButtonY 10
+#define XButton 9   //X軸入力
+#define YButton  10  //Y軸入力
 
 //リミットスイッチ
-#define XLimit 12
-#define YLimit 13
+#define XLimit 12   //X軸リミットスイッチ
+#define YLimit 13   //Y軸リミットスイッチ
 
-#define BUFFER_SIZE 64
+#define BUFFER_SIZE 64  //コマンド入力用バッファサイズ
 
 
 Motor<XMotion,XReverse,XLimit> X_Motor; //X軸 正転:2,逆転:3,リミットスイッチ:12
@@ -91,8 +91,8 @@ void setup()
     Serial.begin(115200);
     Serial.println("[Copyright]Copyright 2023 SanaeProject.");
 
-    pinMode(ButtonX,INPUT_PULLUP);
-    pinMode(ButtonY,INPUT_PULLUP);
+    pinMode(XButton,INPUT_PULLUP);
+    pinMode(YButton,INPUT_PULLUP);
 
     //UfoキャッチャーのポジションをHomeへ
     UfoCatcherMoveToHome();
@@ -105,8 +105,8 @@ void loop()
 {
     uint8_t RetValue = 0;
 
-    RetValue += X_Motor.Listen(ButtonX);
-    RetValue += Y_Motor.Listen(ButtonY);
+    RetValue += X_Motor.Listen(XButton);
+    RetValue += Y_Motor.Listen(YButton);
 
     //パソコンからの入力
     if(Serial.available()){
