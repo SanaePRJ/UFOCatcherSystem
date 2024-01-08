@@ -26,7 +26,7 @@
 
 //ユーザ入力
 #define XButton 9   //X軸入力
-#define YButton  10  //Y軸入力
+#define YButton 10  //Y軸入力
 
 //リミットスイッチ
 #define XLimit 12   //X軸リミットスイッチ
